@@ -1,0 +1,68 @@
+Horizon
+==============
+
+This image is the custom image of horizon from https://hub.docker.com/r/rethinkdb/horizon/
+
+## Build
+
+```
+./build
+```
+
+## Versions
+
+- `2.0.0`[(Dockerfile)](https://github.com/dtthaison/docker-horizon/blob/2.0.0/Dockerfile)
+
+## Configuration
+
+The required env variables are:
+  - HORIZON_PROJECT_NAME: project name
+  - HORIZON_RETHINKDB_URI: rethinkdb uri with port
+  - HORIZON_RDB_USER: rethinkdb user
+  - HORIZON_RDB_PASSWORD: rethinkdb password
+
+Besides, you can customize the configuration in several ways:
+
+### Default Configuration
+
+Horizon is installed with the default configuration and some parameters can be overrided with env variables:
+
+*configs.toml*
+- HORIZON_BIND=${HORIZON_BIND:-"all"}
+- HORIZON_SECURE=${HORIZON_SECURE:-false}
+- HORIZON_PROJECT_NAME=${HORIZON_PROJECT_NAME:-"test"}
+- HORIZON_AUTO_CREATE_COLLECTION=${HORIZON_AUTO_CREATE_COLLECTION:-false}
+- HORIZON_AUTO_CREATE_INDEX=${HORIZON_AUTO_CREATE_INDEX:-false}
+- HORIZON_RETHINKDB_URI=${HORIZON_RETHINKDB_URI:-"localhost:28015"}
+- HORIZON_START_RETHINKDB=${HORIZON_START_RETHINKDB:-false}
+- HORIZON_RDB_TIMEOUT=${HORIZON_RDB_TIMEOUT:-30}
+- HORIZON_DEBUG=${HORIZON_DEBUG:-false}
+- HORIZON_ALLOW_ANONYMOUS=${HORIZON_ALLOW_ANONYMOUS:-false}
+- HORIZON_ALLOW_UNAUTHENTICATED=${HORIZON_ALLOW_UNAUTHENTICATED:-false}
+- HORIZON_AUTH_REDIRECT=${HORIZON_AUTH_REDIRECT:-"/"}
+- HORIZON_ACCESS_CONTROL_ALLOW_ORIGIN=${HORIZON_ACCESS_CONTROL_ALLOW_ORIGIN:-""}
+
+*secrets.toml*
+- HORIZON_TOKEN_SECRET=${HORIZON_TOKEN_SECRET:-"lfXnAWSJuXMfCHkZGUbOACx3K9JHbdbe6wGbHI6GDyCOLdE7pj8BcCDEn8zWjRKhSdpLAJQFKSv0JArkj09mFQ=="}
+- HORIZON_RDB_USER=${HORIZON_RDB_USER:-"admin"}
+- HORIZON_RDB_PASSWORD=${HORIZON_RDB_PASSWORD:-""}
+
+- HORIZON_AUTH_AUTH0_HOST
+- HORIZON_AUTH_AUTH0_ID
+- HORIZON_AUTH_AUTH0_SECRET
+- HORIZON_AUTH_FACEBOOK_ID
+- HORIZON_AUTH_FACEBOOK_SECRET
+- HORIZON_AUTH_GOOGLE_ID
+- HORIZON_AUTH_GOOGLE_SECRET
+- HORIZON_AUTH_TWITTER_ID
+- HORIZON_AUTH_TWITTER_SECRET
+- HORIZON_AUTH_TWITCH_ID
+- HORIZON_AUTH_TWITCH_SECRET
+- HORIZON_AUTH_TWITCH_ID
+- HORIZON_AUTH_TWITCH_SECRET
+- HORIZON_AUTH_SLACK_ID
+- HORIZON_AUTH_SLACK_SECRET
+
+[horizon]: http://horizon.io/
+
+

@@ -1,0 +1,14 @@
+app=horizon
+
+if docker ps -a | grep $app
+then
+  docker stop --time 0 $app
+  docker rm $app
+fi
+
+docker run -d -t -i -p 8181:8181 \
+-e HORIZON_PROJECT_NAME='cc' \
+-e HORIZON_RETHINKDB_URI='192.168.99.100:28015' \
+-e HORIZON_RDB_USER='admin' \
+-e HORIZON_RDB_PASSWORD='123404321' \
+--name $app dtthaison/$app:$(cat version)
