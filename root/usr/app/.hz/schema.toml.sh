@@ -1,11 +1,21 @@
 #!/usr/bin/env sh
 
-CONFIG_FILE=/usr/app/.hz/secrets.toml
+CONFIG_FILE=/usr/app/.hz/schema.toml
 
-cat << EOF > ${CONFIG_FILE}
+HORIZON_SCHEMA=${HORIZON_SCHEMA:-""}
 
+$HORIZON_SCHEMA+=$(cat << EOF
+#
 [groups.admin]
 [groups.admin.rules.carte_blanche]
 template = "any()"
+#
+EOF
+)
+
+cat << EOF > ${CONFIG_FILE}
+# [groups.GROUP_NAME.rules.RULE_NAME]
+
+${HORIZON_SCHEMA}
 
 EOF

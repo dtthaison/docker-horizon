@@ -11,4 +11,24 @@ docker run -d -t -i -p 8181:8181 \
 -e HORIZON_RETHINKDB_URI='192.168.99.100:28015' \
 -e HORIZON_RDB_USER='admin' \
 -e HORIZON_RDB_PASSWORD='123404321' \
+-e HORIZON_SCHEMA="
+[groups.supervisor]
+[groups.supervisor.rules.carte_blanche]
+template = \"any()\"
+
+[groups.agent]
+[groups.agent.rules.read_cars]
+template = \"collection('cars').anyRead()\"
+[groups.agent.rules.read_orders]
+template = \"collection('orders').anyRead()\"
+[groups.agent.rules.any_bookmarks]
+template = \"collection('bookmarks').any()\"
+[groups.agent.rules.any_order_editing]
+template = \"collection('order_editing').any()\"
+[groups.agent.rules.read_statistics]
+template = \"collection('statistics').anyRead()\"
+[groups.agent.rules.read_messages]
+template = \"collection('messages').anyRead()\"
+
+" \
 --name $app dtthaison/$app:$(cat version)
